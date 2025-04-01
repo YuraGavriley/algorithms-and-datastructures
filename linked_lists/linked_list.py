@@ -6,3 +6,9 @@ class LinkedList:
         self.head = self.node
         self.tail = self.node
         self.length = 1
+
+    def print_list(self):
+        current_node = self.head
+        while current_node is not None:
+            print(current_node.value)
+            current_node = current_node.next
