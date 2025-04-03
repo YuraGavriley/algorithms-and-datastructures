@@ -81,3 +81,15 @@ class LinkedList:
         if self.length == 0:  # Edge case when we have 1 element in the list
             self.tail = None
         return node_to_pop
+
+    def get(self, index:int):
+        # Check if indext is out of bounds
+        if (index < 0) or (index >= self.length):
+            return None
+
+        temp_node = self.head
+        temp_index = 0
+        while temp_index != index:
+            temp_node = temp_node.next
+            temp_index += 1
+        return temp_node
