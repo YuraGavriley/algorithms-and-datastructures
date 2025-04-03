@@ -71,16 +71,13 @@ class LinkedList:
         return True
 
     def pop_first(self):
-        if self.length == 0:
+        if self.length == 0:  # Edge case when we have 0 elements in the list
             return None
 
         node_to_pop = self.head
-        if self.length == 1:
-            self.head = None
-            self.tail = None
-        else:
-            self.head = node_to_pop.next
-            node_to_pop.next = None
-
+        self.head = self.head.next
+        node_to_pop.next = None
         self.length -= 1
+        if self.length == 0:  # Edge case when we have 1 element in the list
+            self.tail = None
         return node_to_pop
