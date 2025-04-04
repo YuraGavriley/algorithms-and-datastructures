@@ -88,8 +88,6 @@ class LinkedList:
             return None
 
         temp_node = self.head
-        temp_index = 0
-        while temp_index != index:
+        for _ in range(index):
             temp_node = temp_node.next
-            temp_index += 1
         return temp_node
