@@ -91,3 +91,10 @@ class LinkedList:
         for _ in range(index):
             temp_node = temp_node.next
         return temp_node
+
+    def set_value(self, index: int, value):
+        temp_node = self.get(index)
+        if not temp_node:  # If index is out of bounds
+            return False
+        temp_node.value = value
+        return True
