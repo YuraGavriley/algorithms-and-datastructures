@@ -27,8 +27,8 @@ class LinkedList:
         else:
             self.tail.next = new_node
             self.tail = new_node
-
         self.length += 1
+        return True
 
     def pop(self):
         # Empty linked list
@@ -98,3 +98,19 @@ class LinkedList:
             return False
         temp_node.value = value
         return True
+
+    def insert(self, index: int, value):
+        if index == 0:
+            return self.prepend(value)
+
+        if index == self.length:
+            return self.append(value)
+
+        new_node = Node(value)
+        temp_node = self.get(index - 1)
+        if temp_node:
+            new_node.next = temp_node.next
+            temp_node.next = new_node
+            self.length += 1
+            return True
+        return False
