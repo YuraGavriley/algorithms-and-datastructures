@@ -100,6 +100,9 @@ class LinkedList:
         return True
 
     def insert(self, index: int, value):
+        if index < 0 or index > self.length:
+            return False
+
         if index == 0:
             return self.prepend(value)
 
@@ -108,9 +111,7 @@ class LinkedList:
 
         new_node = Node(value)
         temp_node = self.get(index - 1)
-        if temp_node:
-            new_node.next = temp_node.next
-            temp_node.next = new_node
-            self.length += 1
-            return True
-        return False
+        new_node.next = temp_node.next
+        temp_node.next = new_node
+        self.length += 1
+        return True
