@@ -132,3 +132,15 @@ class LinkedList:
         node_to_remove.next = None
         self.length -= 1
         return node_to_remove
+
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        before = None
+        after = temp.next
+        while temp:  # While temp is not pointing to None
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
