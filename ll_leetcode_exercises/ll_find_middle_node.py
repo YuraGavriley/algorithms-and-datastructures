@@ -27,8 +27,7 @@ class LinkedList:
         fast = self.head
         while fast != self.tail and fast is not None:
             slow = slow.next
-            fast = fast.next
-            fast = fast.next
+            fast = fast.next.next
         return slow
 
 
