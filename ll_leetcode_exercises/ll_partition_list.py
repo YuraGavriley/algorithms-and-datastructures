@@ -32,6 +32,8 @@ class LinkedList:
         self.length = 0
 
     def partition_list(self, x):
+        if self.head is None:
+            return None
         temp = self.head
         before = LinkedList("before")  # Create dummy first node
         after = LinkedList("after")
