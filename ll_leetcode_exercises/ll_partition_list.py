@@ -31,24 +31,45 @@ class LinkedList:
         self.tail = None
         self.length = 0
 
+    # def partition_list(self, x):
+    #     if self.head is None:
+    #         return None
+    #     temp = self.head
+    #     before = LinkedList("before")  # Create dummy first node
+    #     after = LinkedList("after")
+    #     before.tail = before.head
+    #     after.tail = after.head
+    #     while temp:
+    #         if temp.value < x:
+    #             before.append(temp.value)
+    #             before.tail = before.tail.next
+    #         else:
+    #             after.append(temp.value)
+    #             after.tail = after.tail.next
+    #         temp = temp.next
+    #     before.tail.next = after.head.next
+    #     self.head = before.head.next
+
+
     def partition_list(self, x):
         if self.head is None:
             return None
         temp = self.head
-        before = LinkedList("before")  # Create dummy first node
-        after = LinkedList("after")
-        before.tail = before.head
-        after.tail = after.head
+        before = Node(0)
+        after = Node(0)
+        tail_b, tail_a = before, after
+        temp = self.head
         while temp:
             if temp.value < x:
-                before.append(temp.value)
-                before.tail = before.tail.next
+                tail_b.next = temp
+                tail_b = temp
             else:
-                after.append(temp.value)
-                after.tail = after.tail.next
+                tail_a.next = temp
+                tail_a = temp
             temp = temp.next
-        before.tail.next = after.head.next
-        self.head = before.head.next
+        tail_b.next = tail_a.next = None
+        tail_b.next = after.next
+        self.head = before.next
 
 
 
@@ -66,10 +87,10 @@ class LinkedList:
 #   |   to build two separate lists: one for elements   |
 #   |   smaller than `x` and one for elements greater   |
 #   |   or equal to `x`.                                |
-#   | - `prev1` and `prev2` help us keep track of the   |
+#   | - `tail1` and `tail2` help us keep track of the   |
 #   |   last nodes in these lists.                      |
 #   | - Finally, we merge these two lists by setting    |
-#   |   `prev1.next = dummy2.next`.                     |
+#   |   `tail1.next = dummy2.next`.                     |
 #   | - The head of the resulting list becomes          |
 #   |   `dummy1.next`.                                  |
 #   +===================================================+
