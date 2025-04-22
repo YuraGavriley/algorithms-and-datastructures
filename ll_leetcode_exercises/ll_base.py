@@ -20,3 +20,14 @@ class LinkedList:
             self.tail.next = new_node
             self.tail = new_node
         return True
+
+    def print_list(self):
+        if self.head is None:
+            print("empty list")
+        else:
+            temp = self.head
+            values = []
+            while temp is not None:
+                values.append(str(temp.value))
+                temp = temp.next
+            print(" -> ".join(values))
