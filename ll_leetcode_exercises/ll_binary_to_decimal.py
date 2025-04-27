@@ -31,41 +31,32 @@ class LinkedList:
                 temp = temp.next
             print(" -> ".join(values))
 
-    def binary_to_decimal(self):
-        if self.head is None:
-            return 0
-        count = 0
-        val_list = []
-        node = self.head
-        while node:
-            val_list.append(node.value)
-            node = node.next
-        if val_list[-1] == 1:  # Make sure the last digit is counted correctly
-            count += 1
-        index = len(val_list) - 1
-        for val in val_list[:-1]:  # Iterate without last digit
-            count += (val * 2) ** index
-            index -= 1
-        return count
-
     # def binary_to_decimal(self):
     #     if self.head is None:
     #         return 0
-    #     num = 0
+    #     count = 0
+    #     val_list = []
     #     node = self.head
-    #     while node is not None:
-    #         num = num * 2 + node.value
+    #     while node:
+    #         val_list.append(node.value)
     #         node = node.next
-    #     return num
+    #     if val_list[-1] == 1:  # Make sure the last digit is counted correctly
+    #         count += 1
+    #     index = len(val_list) - 1
+    #     for val in val_list[:-1]:  # Iterate without last digit
+    #         count += (val * 2) ** index
+    #         index -= 1
+    #     return count
 
-    # WRITE BINARY_TO_DECIMAL METHOD HERE #
-    #                                     #
-    #                                     #
-    #                                     #
-    #                                     #
-    #######################################
-
-
+    def binary_to_decimal(self):
+        if self.head is None:
+            return 0
+        num = 0
+        node = self.head
+        while node is not None:
+            num = num * 2 + node.value
+            node = node.next
+        return num
 
 
 # Test case 1: Binary number 110 = Decimal number 6
