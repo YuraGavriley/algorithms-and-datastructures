@@ -1,4 +1,4 @@
-from ll_node import Node
+from .ll_node import Node
 
 class LinkedList:
     def __init__(self, value):
